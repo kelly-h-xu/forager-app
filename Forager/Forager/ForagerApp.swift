@@ -12,8 +12,8 @@ import SwiftData
 struct ForagerApp: App {
     var body: some Scene {
         WindowGroup {
-            IntroView()
-            //CameraView()
+            //IntroView()
+            CameraView()
         }
     }
 }

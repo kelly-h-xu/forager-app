@@ -131,6 +131,45 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
             }
         }
     
+    func switchCamera() {
+        sessionQueue.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.session.beginConfiguration()
+            
+            // Remove current input
+            if let currentInput = self.currentInput {
+                self.session.removeInput(currentInput)
+            }
+            
+            // Determine new camera position
+            let currentPosition = self.currentInput?.device.position ?? .back
+            let newPosition: AVCaptureDevice.Position = (currentPosition == .back) ? .front : .back
+            
+            // Get new camera device
+            guard let newCamera = AVCaptureDevice.default(.builtInWideAngleCamera,
+                                                          for: .video,
+                                                          position: newPosition),
+                  let newInput = try? AVCaptureDeviceInput(device: newCamera) else {
+                // Failed to get new camera, re-add old input
+                if let currentInput = self.currentInput,
+                   self.session.canAddInput(currentInput) {
+                    self.session.addInput(currentInput)
+                }
+                self.session.commitConfiguration()
+                return
+            }
+            
+            // Add new camera input
+            if self.session.canAddInput(newInput) {
+                self.session.addInput(newInput)
+                self.currentInput = newInput
+            }
+            
+            self.session.commitConfiguration()
+        }
+    }
+    
     func zoom(factor: CGFloat) {
             sessionQueue.async { [weak self] in
                 guard let self = self,

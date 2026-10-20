@@ -14,13 +14,13 @@ struct IntroView: View {
         ZStack(alignment: .bottom) {
             TabView(selection: $currentPage) {
                 IntroPage(
-                    image: "forager-char-default",
+                    image: "forager-char-1",
                     title: "Welcome to Forager",
                     subtitle: "Helping you identify edible wild plants, and avoid harmful ones!*"
                 ).tag(0)
                 
                 IntroPage(
-                    image: "heart.fill",
+                    image: "forager-char-2",
                     title: "Forager will help you see...",
                     subtitle: """
                     Which plants we recognize as edible, and which ones we don’t, using computer vision.
@@ -28,7 +28,7 @@ struct IntroView: View {
                 ).tag(1)
                 
                 IntroPage(
-                    image: "bolt.fill",
+                    image: "forager-char-questions",
                     title: "...But sight isn’t enough!",
                     subtitle: """
                         
@@ -39,7 +39,7 @@ struct IntroView: View {
                 ).tag(2)
                 
                 IntroPage(
-                    image: "checkmark.seal.fill",
+                    image: "last-page-custom",
                     title: "It’s almost time to start foraging!",
                     subtitle:
                     """
@@ -117,10 +117,26 @@ struct IntroPage: View {
                 // Top portion — colored with image
                 ZStack {
                     Color("WhiteAsparagus")
-                    Image(image)
-                        .resizable()
-                        .scaledToFit()
+                    if image == "last-page-custom" { // We'll tag a special name for last page
+                        HStack(spacing: geo.size.width * 0.05) {
+                            Image("forager-char-intro-warning")
+                                .resizable()
+                                .scaledToFit()
+                            Image("forager-char-sick")
+                                .resizable()
+                                .scaledToFit()
+                        }
                         .padding(geo.size.width * 0.08)
+                    } else {
+                        Image(image)
+                            .resizable()
+                            .scaledToFit()
+                            .padding(
+                                (image == "forager-char-2" || image == "forager-char-questions")
+                                    ? geo.size.width * 0.02
+                                    : geo.size.width * 0.08
+                            )
+                    }
                 }
                 .frame(height: geo.size.height * 7/16)
                 

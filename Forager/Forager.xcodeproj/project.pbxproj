@@ -48,16 +48,6 @@
 			path = Forager;
 			sourceTree = "<group>";
 		};
-		8987D6922F4E316C00C7FF8A /* ForagerTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ForagerTests;
-			sourceTree = "<group>";
-		};
-		8987D69C2F4E316C00C7FF8A /* ForagerUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ForagerUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				8987D6822F4E316B00C7FF8A /* Forager */,
-				8987D6922F4E316C00C7FF8A /* ForagerTests */,
-				8987D69C2F4E316C00C7FF8A /* ForagerUITests */,
 				8987D6812F4E316B00C7FF8A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,9 +131,6 @@
 			dependencies = (
 				8987D6912F4E316C00C7FF8A /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				8987D6922F4E316C00C7FF8A /* ForagerTests */,
-			);
 			name = ForagerTests;
 			packageProductDependencies = (
 			);
@@ -165,9 +150,6 @@
 			);
 			dependencies = (
 				8987D69B2F4E316C00C7FF8A /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				8987D69C2F4E316C00C7FF8A /* ForagerUITests */,
 			);
 			name = ForagerUITests;
 			packageProductDependencies = (
@@ -418,6 +400,7 @@
 				INFOPLIST_FILE = Forager/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to capture photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app reads the photo library so users can upload their images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -453,6 +436,7 @@
 				INFOPLIST_FILE = Forager/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to capture photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app reads the photo library so users can upload their images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
